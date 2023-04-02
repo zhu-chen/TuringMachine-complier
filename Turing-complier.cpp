@@ -6,15 +6,12 @@ const string FILENAME="Turing";
 vector<char> alphabet={'B','0','1','+','=','#'};
 
 void write(string q_pre,char char_pre,char char_next,bool direction,string q_next);
-void movuntil(string q_pre,char target,bool direction,bool direction_next,string q_next);
+void movuntil(string q_pre,char target,bool direction,bool direction_next,string q_next,char target_next='Z');
+void movuntil(string q_pre,string target,bool direction,bool direction_next,string q_next,char target_next='Z');
 void movstep(string q_pre,int step,bool direction,string q_next);
 
 void work(){ //write your code here
-/* test code 
-    write("q0",'B','B',1,"q1");
-    movuntil("q1",'+',1,0,"q2");
-    movstep("q2",4,1,"q3");
-*/
+
 }
 
 /*
@@ -32,10 +29,20 @@ void write(string q_pre,char char_pre,char char_next,bool direction,string q_nex
     cout<<q_pre<<","<<char_pre<<","<<char_next<<","<<(direction?'R':'L')<<","<<q_next<<endl;
 }
 
-void movuntil(string q_pre,char target,bool direction,bool direction_next,string q_next){
+void movuntil(string q_pre,char target,bool direction,bool direction_next,string q_next,char target_next){
     for(int i=0;i<alphabet.size();i++){
         if(alphabet[i]==target){
-            write(q_pre,alphabet[i],alphabet[i],direction_next,q_next);
+            write(q_pre,alphabet[i],(target_next=='Z')?alphabet[i]:target_next,direction_next,q_next);
+        }else{
+            write(q_pre,alphabet[i],alphabet[i],direction,q_pre);
+        }
+    }
+}
+
+void movuntil(string q_pre,string target,bool direction,bool direction_next,string q_next,char target_next){
+    for(int i=0;i<alphabet.size();i++){
+        if(target.find(alphabet[i])!=string::npos){
+            write(q_pre,alphabet[i],(target_next=='Z')?alphabet[i]:target_next,direction_next,q_next);
         }else{
             write(q_pre,alphabet[i],alphabet[i],direction,q_pre);
         }
