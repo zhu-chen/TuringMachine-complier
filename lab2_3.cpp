@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//qwetfasfaddfds
 //settings
 const string FILENAME="Turing";
 vector<char> alphabet={'B','0','1','+','=','#'};
