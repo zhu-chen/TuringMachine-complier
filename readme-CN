@@ -1,0 +1,33 @@
+# TuringMachine-complier
+用于中国科学院大学计算机科学导论课程中的图灵机语言生成器
+
+## 如何使用?
+填写 FILENAME 和字母表（字母表应包含所有字符，包括 B）
+将代码以下文提到的格式添加到 void work() 中
+编译并运行代码，你可以在 FILENAME.out 中找到输出
+
+## 特性
+
+在这个代码中，0 表示 左 L，1 表示 右 R
++ `void write(string q_pre,char char_pre,char char_next,bool direction,string q_next);`
+
+写入一行 q_pre，char_pre，char_next，L/R，q_next
+
++ `void movuntil(string q_pre,char target,bool direction,bool direction_next,string q_next,char target_next='Z');`
+
+q_pre 向 L/R 移动直到遇到目标字符target，并进入状态 q_next
+
+如果 target_next 不为空，则将target更改为 target_next
+
+
++ `void movuntil(string q_pre,string target,bool direction,bool direction_next,string q_next,char target_next='Z');`
+
+q_pre 向 L/R 移动直到遇到目标字符target，并进入状态 q_next
+
+如果 target_next 不为空，则将target更改为 target_next
+
+if target_next is not blank,change the target to target_next
+
++ `void movstep(string q_pre,int step,bool direction,string q_next);`
+
+q_pre 向 L/R 移动 [step] 步，并进入状态 q_next
